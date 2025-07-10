@@ -1,0 +1,6 @@
+@AdventureWorksGraphQLAPI_HostAddress = http://localhost:5190
+
+GET {{AdventureWorksGraphQLAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
