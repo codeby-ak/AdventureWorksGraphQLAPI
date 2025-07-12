@@ -44,26 +44,35 @@ namespace AdventureWorksGraphQLAPI.Data
         [UseProjection]
         [UseFiltering]
         [UseSorting]
-        public async Task<List<SalesOrderDetail>> GetProductWithSalesOrder(int id, AdventureWorks2022Context _dbcontext)
+        public async Task<List<SalesOrderDetail>> GetSalesOrderById(int id, AdventureWorks2022Context _dbcontext)
         {
+            //return await _dbcontext.SalesOrderDetails
+            //                        .Include(x => x.SalesOrder)
+            //                        .Include(x => x.Product)
+            //                        .Include(x => x.Product.ProductSubcategory)
+            //                        .Include(x => x.Product.ProductModel)
+            //                        .Include(x => x.Product.BillOfMaterialComponents)
+            //                        .Include(x => x.Product.BillOfMaterialProductAssemblies)
+            //                        .Include(x => x.Product.ProductCostHistories)
+            //                        .Include(x => x.Product.ProductInventories)
+            //                        .Include(x => x.Product.ProductListPriceHistories)
+            //                        .Include(x => x.Product.ProductProductPhotos)
+            //                        .Include(x => x.Product.ProductReviews)
+            //                        .Include(x => x.Product.ProductVendors)
+            //                        .Include(x => x.Product.PurchaseOrderDetails)
+            //                        .Include(x => x.SalesOrder.SalesPerson)
+            //                        .Include(x => x.SalesOrder.ShipToAddress)
+            //                        .Include(x => x.SalesOrder.BillToAddress)
+            //                        .Include(x => x.SalesOrder.Customer)
+            //                        .Where(p => p.SalesOrderId == id)
+            //                        .ToListAsync();
+
             return await _dbcontext.SalesOrderDetails
                                     .Include(x => x.SalesOrder)
                                     .Include(x => x.Product)
-                                    .Include(x => x.Product.ProductSubcategory)
-                                    .Include(x => x.Product.ProductModel)
-                                    .Include(x => x.Product.BillOfMaterialComponents)
-                                    .Include(x => x.Product.BillOfMaterialProductAssemblies)
-                                    .Include(x => x.Product.ProductCostHistories)
-                                    .Include(x => x.Product.ProductInventories)
-                                    .Include(x => x.Product.ProductListPriceHistories)
-                                    .Include(x => x.Product.ProductProductPhotos)
                                     .Include(x => x.Product.ProductReviews)
-                                    .Include(x => x.Product.ProductVendors)
-                                    .Include(x => x.Product.PurchaseOrderDetails)
-                                    .Include(x => x.SalesOrder.SalesPerson)
                                     .Include(x => x.SalesOrder.ShipToAddress)
                                     .Include(x => x.SalesOrder.BillToAddress)
-                                    .Include(x => x.SalesOrder.Customer)
                                     .Where(p => p.SalesOrderId == id)
                                     .ToListAsync();
         }
